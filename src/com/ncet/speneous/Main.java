@@ -17,7 +17,7 @@ public static void main(String[] args) {
 		System.out.println("Enter your Choice : ");
 		int c = sc.nextInt();
 		switch(c){
-		case 1: ws.main(null);
+		case 1: ws.school(null);
 		break;
 		case 2 :
 		}

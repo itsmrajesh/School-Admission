@@ -41,12 +41,23 @@ public class WorkingOfSchool {
 		System.out.println("List of school");
 		for (int i = 0; i < school.size(); i++) {
 			School s = school.get(i);
-			s.displaySchool();
+			if(s!=null) {
+				s.displaySchool();
+			}
+			else {
+				System.out.println("List is Empty");
+			}
+			
+			
 		}
 
 	}
 
 	public void DeleteSchool(int id) {
+		System.out.println("Enter School ID to delete :");
+		int c = sc1.nextInt();
+		id=c;
+		school.remove(id);
 		System.out.println("Deleting school");
 	}
 
@@ -59,7 +70,7 @@ public class WorkingOfSchool {
 		System.out.println("updating school");
 	}
 
-	public static void main(String[] args) {
+	public static void school(String[] args) {
 		WorkingOfSchool w1 = new WorkingOfSchool();
 		Main m = new Main();
 
