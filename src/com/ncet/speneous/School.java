@@ -6,13 +6,13 @@ import java.util.List;
 public class School {
 	private String Schoolname;
 	private String Schoolboard;
-	private String contactNumber;
+	private int contactNumber;
 	private int SchoolId;
 	private int classNumber;
 	private int totalSeats;
 	private int currentStrength;
 
-	public School(String schoolname, String schoolboard, String contactNumber, int schoolId, int classNumber,
+	public School(String schoolname, String schoolboard, int contactNumber, int schoolId, int classNumber,
 			int currentStrength, int totalSeats) {
 
 		this.Schoolname = schoolname;
@@ -41,11 +41,11 @@ public class School {
 		Schoolboard = schoolboard;
 	}
 
-	public String getContactNumber() {
+	public int getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(String contactNumber) {
+	public void setContactNumber(int contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 

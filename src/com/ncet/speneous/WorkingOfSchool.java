@@ -1,26 +1,59 @@
 package com.ncet.speneous;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class WorkingOfSchool {
+	boolean z = true;
 	ArrayList<School> school = new ArrayList<>();
 	static Scanner sc = new Scanner(System.in);
 	static Scanner sc1 = new Scanner(System.in);
 
 	public boolean AddSchool() {
 
-		System.out.println("Enter the school name");
+		System.out.println("Enter the school Name :");
 		String name = sc.next();
+		while (!name.matches("[a-zA-Z]+")) {
+			System.out.println("Enter the  Valid school Name :");
+			name = sc.next();
+		}
 
-		System.out.println("Enter the school id");
-		int id = sc1.nextInt();
+		int id = 0;
+		boolean a = true;
+		while (a) {
+			try {
+				System.out.println("Enter School ID :");
+				id = sc1.nextInt();
+				a = false;
+				break;
+			} catch (InputMismatchException e) {
+				sc1.next();
+				System.out.println("****Enter valid ID");
 
+			}
+		}
 		System.out.println("Enter the  SchoolBoard");
 		String board = sc.next();
+//		while(!board.matches("cbse,icse,state")) {
+//			System.out.println("Enter the  Valid Board Name :");
+//			board = sc.next();
+//		}
 
-		System.out.println("Enter the school Contactnumber");
-		String cn = sc1.next();
+		int cn = 0;
+		boolean a1 = true;
+		while (a1) {
+			try {
+				System.out.println("Enter the school Contactnumber :");
+				cn = sc1.nextInt();
+				a1 = false;
+				break;
+			} catch (InputMismatchException e) {
+				sc1.next();
+				System.out.println("****Enter valid Number ");
+
+			}
+		}
 
 		System.out.println("Enter the school no of class");
 		int nc = sc.nextInt();
@@ -41,14 +74,12 @@ public class WorkingOfSchool {
 		System.out.println("List of school");
 		for (int i = 0; i < school.size(); i++) {
 			School s = school.get(i);
-			if(s!=null) {
+			if (school.size() != 0) {
 				s.displaySchool();
-			}
-			else {
+			} else {
 				System.out.println("List is Empty");
 			}
-			
-			
+
 		}
 
 	}
@@ -56,7 +87,7 @@ public class WorkingOfSchool {
 	public void DeleteSchool(int id) {
 		System.out.println("Enter School ID to delete :");
 		int c = sc1.nextInt();
-		id=c;
+		id = c;
 		school.remove(id);
 		System.out.println("Deleting school");
 	}
@@ -104,6 +135,7 @@ public class WorkingOfSchool {
 				break;
 			case 6:
 				m.main(null);
+				break;
 			default:
 				System.out.println("Hello! Boos give proper input ");
 				break;

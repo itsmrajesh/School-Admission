@@ -17,9 +17,10 @@ public static void main(String[] args) {
 		System.out.println("Enter your Choice : ");
 		int c = sc.nextInt();
 		switch(c){
-		case 1: ws.school(null);
+		case 1: ws.school(args);
 		break;
 		case 2 :
+			break;
 		}
 	}
 }
