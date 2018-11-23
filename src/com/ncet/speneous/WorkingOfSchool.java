@@ -29,13 +29,13 @@ public class WorkingOfSchool {
 				break;
 			} catch (InputMismatchException e) {
 				sc1.next();
-				System.out.println("****Enter valid ID");
+				System.out.println("****Enter valid School ID");
 
 			}
 		}
 		System.out.println("Enter the  SchoolBoard");
 		String board = sc.next();
-//		while(!board.matches("cbse,icse,state")) {
+//		while(board.!matches("cbse,icse,state")) {
 //			System.out.println("Enter the  Valid Board Name :");
 //			board = sc.next();
 //		}
@@ -84,26 +84,96 @@ public class WorkingOfSchool {
 
 	}
 
-	public void DeleteSchool(int id) {
-		System.out.println("Enter School ID to delete :");
-		int c = sc1.nextInt();
-		id = c;
-		school.remove(id);
-		System.out.println("Deleting school");
+	public void DeleteSchool(int id)
+	{
+		System.out.println("Deleting School with ID :  "+id);
+		boolean flag= false;
+		School s1;
+		for(int i=0;i<school.size();i++)
+		{
+			s1 = school.get(i) ;
+			int myid = s1.getSchoolId();
+			if(myid ==id)
+			{
+				school.remove(i);
+				flag = true;
+			}
+		}
+		if(flag==false)
+		{
+			System.out.println("School not found with ID :  " +id);
+		}
 	}
 
-	public String GetSchool(int id) {
-		System.out.println("searching school");
-		return "ok";
+	public void GetSchool(int id) {
+		boolean flag = false;
+		System.out.println("Searching School with ID  : "+id);
+		School s1;
+		for (int i = 0; i < school.size(); i++) {
+			s1 = school.get(i);
+			int myid = s1.getSchoolId();
+			if (myid == id) {
+
+				s1.displaySchool();
+				flag = true;
+			}
+		}
+		if (flag == false) {
+			System.out.println("School not found with ID  : "+id);
+		}
 	}
 
-	public void UpdateSchool() {
-		System.out.println("updating school");
+	public void UpdateSchool(int id) {
+		System.out.println("Take a look at School Details ");
+		GetSchool(id);
+		School s;
+		boolean flag = false;
+		for (int i = 0; i < school.size(); i++) {
+			s = school.get(i);
+			int myid = s.getSchoolId();
+			if (myid == id) {
+
+				System.out.println("1.Change school Name");
+				System.out.println("2.Change school Id");
+				System.out.println("3.Change SchoolBoard");
+				System.out.println("4.change School ContactNumber");
+				System.out.println("Enter your choice");
+				int ch = sc.nextInt();
+				switch (ch) {
+				case 1:
+					System.out.println("Enter the name of the School");
+					String cgName = sc.next();
+					s.setSchoolname(cgName);
+					break;
+				case 2:
+					System.out.println("Enter the schoolId");
+					int cgid = sc.nextInt();
+					s.setSchoolId(cgid);
+					break;
+				case 3:
+					System.out.println("Enter school board");
+					String cgboard = sc.next();
+					s.setSchoolboard(cgboard);
+					break;
+				case 4:
+					System.out.println("Enter school contactNumber");
+					int cgcontact = sc.nextInt();
+					s.setContactNumber(cgcontact);
+					break;
+				}
+				flag = true;
+			}
+		}
+		if (flag == false) {
+			System.out.println("School not Found with id  : "+id);
+		}
 	}
 
+	
+	
+	
 	public static void school(String[] args) {
 		WorkingOfSchool w1 = new WorkingOfSchool();
-		Main m = new Main();
 
 		while (true) {
 			System.out.println("1.AddSchool");
@@ -112,8 +182,26 @@ public class WorkingOfSchool {
 			System.out.println("4.SearchSchool by id");
 			System.out.println("5.DeleteSchool");
 			System.out.println("6.Exit");
-			System.out.println("Enter your Choice : ");
-			int c = sc1.nextInt();
+
+			int c = 0;
+			boolean d = true;
+			while (d) {
+				try {
+					System.out.println("Enter your Choice : ");
+					c = sc1.nextInt();
+					if (c > 6 && c != 0) {
+						System.out.println("Make Choice between 1 - 6 ");
+
+					}
+					d = false;
+					break;
+				} catch (InputMismatchException e) {
+					sc1.next();
+					System.out.println("****Enter valid input");
+
+				}
+			}
+
 			switch (c) {
 			case 1:
 				boolean s = w1.AddSchool();
@@ -122,22 +210,28 @@ public class WorkingOfSchool {
 				}
 				break;
 			case 5:
-				w1.DeleteSchool(1);
+				System.out.println("Enter School ID to Delete : ");
+				int idd = sc.nextInt();
+				w1.DeleteSchool(idd);
 				break;
 			case 3:
-				w1.UpdateSchool();
+				System.out.println("Enter School ID to Update : ");
+				int idu = sc.nextInt();
+				w1.UpdateSchool(idu);
 				break;
 			case 4:
-				w1.GetSchool(1);
+				System.out.println("Enter School ID to Search : ");
+				int id = sc.nextInt();
+				w1.GetSchool(id);
 				break;
 			case 2:
 				w1.ListOfSchool();
 				break;
 			case 6:
-				m.main(null);
+				Main.main(null);
 				break;
 			default:
-				System.out.println("Hello! Boos give proper input ");
+				System.out.println(" ");
 				break;
 			}
 		}
