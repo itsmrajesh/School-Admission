@@ -37,9 +37,10 @@ public class Main {
 
 			switch (c) {
 			case 1:
-				WorkingOfSchool.school(null);
+				WorkingOfSchool.school(args);
 				break;
 			case 2:
+				StudentWorking.student(args);
 				break;
 			}
 		}

@@ -74,7 +74,7 @@ public class StudentWorking {
 	}
 
 	public void ListOfStudents() {
-		System.out.println("List of school");
+		System.out.println("List of Students");
 		for (int i = 0; i < students.size(); i++) {
 			Student s = students.get(i);
 			if (students.size() != 0) {
